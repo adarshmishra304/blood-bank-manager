@@ -26,6 +26,8 @@ export default function Auth() {
     try {
       const res = await login(loginData);
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("name", res.data.name);     // 🩸 Store name
+      localStorage.setItem("role", res.data.role);     // 🧑‍⚕️ Store role
       alert(`✅ Logged in as: ${loginData.email}`);
       navigate("/profile");
       setTimeout(() => window.location.reload(), 100);
@@ -34,11 +36,15 @@ export default function Auth() {
     }
   };
 
+
+
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
       const res = await register(signupData);
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("name", res.data.name); 
+      localStorage.setItem("role", res.data.role); 
       alert(`✅ Signed up as: ${signupData.email}`);
       navigate("/profile");
       setTimeout(() => window.location.reload(), 100);
@@ -134,3 +140,5 @@ export default function Auth() {
     </div>
   );
 }
+export const name = localStorage.getItem("name");
+export const role = localStorage.getItem("role");

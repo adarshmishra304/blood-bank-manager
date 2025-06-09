@@ -19,6 +19,7 @@ import axios from "axios";
   export const addBlood = (data) => API.post("/blood/add", data);
   export const getInventory = () => API.get("/blood");
   export const getBloodStats = () => API.get("/blood/stats");
+  export const getTransactionHistory = () => API.get("/blood/history");
 
   // profile
   export const getUserProfile = () => API.get("/private/profile");
@@ -26,4 +27,4 @@ import axios from "axios";
   // auth
   export const login = (data) => API.post("/auth/login", data);
   export const register = (data) => API.post("/auth/register", data);
-  export const getProfile = () => API.get("/auth/profile");
+  export const getProfile = () => API.get("/auth/profile"); 

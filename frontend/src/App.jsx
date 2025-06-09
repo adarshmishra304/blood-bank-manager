@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
+import Bloods from './pages/Bloods';
 
 export default function App() {
   return (
@@ -20,6 +21,8 @@ export default function App() {
           <Route path="/about" element={<div>About Page</div>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/bloods" element={<Bloods />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </div>
     </Router>

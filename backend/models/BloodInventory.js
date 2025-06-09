@@ -1,4 +1,3 @@
-// models/BloodInventory.js
 import mongoose from 'mongoose';
 
 const bloodInventorySchema = new mongoose.Schema({
@@ -12,10 +11,20 @@ const bloodInventorySchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
+  latitude: {
+    type: Number,
+    required: true,
   },
+  longitude: {
+    type: Number,
+    required: true,
+  },
+  hospitalName: {
+    type: String,
+    required: true,
+  },
+}, {
+  timestamps: true // adds createdAt and updatedAt automatically
 });
 
 export const BloodInventory = mongoose.model('BloodInventory', bloodInventorySchema);

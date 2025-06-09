@@ -52,7 +52,7 @@ export const loginDonor = async (req, res) => {
       expiresIn: '1d',
     });
 
-    res.status(200).json({ token, donor: { id: donor._id, name: donor.name, email: donor.email, bloodType: donor.bloodType } });
+    res.status(200).json({ token, donor: { id: donor._id, name: donor.name, role: donor.role, email: donor.email, bloodType: donor.bloodType } });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
@@ -70,3 +70,4 @@ export const getDonorProfile = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
+

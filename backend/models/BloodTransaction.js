@@ -17,17 +17,32 @@ const bloodTransactionSchema = new mongoose.Schema({
     enum: ['donation', 'request'],
     required: true,
   },
+  latitude: {
+    type: Number,
+    required: true,
+  },
+  longitude: {
+    type: Number,
+    required: true,
+  },
+  hospitalName: {
+    type: String,
+    required: true,
+  },
+  donorName: {
+    type: String,
+    required: true,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Donor', // or 'User' if you generalize
   },
-  date: {
+  date: { 
     type: Date,
     default: Date.now,
   },
 });
 
-// export const BloodTransaction = mongoose.model('BloodTransaction', bloodTransactionSchema);
 
 const BloodTransaction = mongoose.model('BloodTransaction', bloodTransactionSchema);
 export { BloodTransaction };

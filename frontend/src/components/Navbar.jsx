@@ -44,6 +44,13 @@ export default function Header() {
                 <Link to="/" className={getLinkClass('/')}>Home</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link to="/bloods" className={getLinkClass('/bloods')}>Bloods</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link to="/donate" className={getLinkClass('/donate')}>Donate</Link>

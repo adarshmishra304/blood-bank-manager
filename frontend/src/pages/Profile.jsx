@@ -69,7 +69,8 @@ export default function Profile() {
             </div>
             <div>
               <h3 className="text-xl font-bold text-gray-800">{profile.name}</h3>
-              <p className="text-gray-600">Blood Donor Hero</p>
+              <p>{profile.role}</p>
+              {/* <p className="text-gray-600">Blood Donor Hero</p> */}
             </div>
           </div>
 

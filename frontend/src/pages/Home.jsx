@@ -1,13 +1,33 @@
 // this is the home page
-
+import DonationsMap from '@/components/DonationsMap';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { HeartPulse, Droplet, HandHeart } from 'lucide-react';
 import heroImage from '@/assets/images.jpeg';
+import { useState, useEffect } from 'react';
+import { getTransactionHistory } from '../../utils/api';
 
 export default function Home() {
+
+  const [donations, setDonations] = useState([]);
+  
+    useEffect(() => {
+      const fetchHistory = async () => {
+        try {
+          const res = await getTransactionHistory();
+          const donatedOnly = res.data.filter(entry => entry.type === "donation");
+          setDonations(donatedOnly);
+        } catch (err) {
+          console.error("Failed to fetch donation history:", err);
+        }
+      };
+  
+      fetchHistory();
+    }, []);
+
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-red-100 to-red-200">
+      
       {/* Hero Section */}
       <section className="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 text-center md:text-left space-y-6">
@@ -34,6 +54,12 @@ export default function Home() {
           <img src={heroImage} alt="Blood Donation" className="w-full rounded-3xl shadow-lg" />
         </div>
       </section>
+      <div className='bg-white shadow-lg rounded-3xl p-6 mx-6 mb-12'>
+        <div className='mr-20 ml-10'>
+          <h2 className="text-2xl font-semibold mb-4">Live Blood Donation Map</h2>
+          <DonationsMap donations={donations} />
+        </div>
+      </div>
 
       {/* Features Section */}
       <section className="bg-white py-16 shadow-inner">
