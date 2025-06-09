@@ -29,19 +29,19 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/private', privateRoutes);
 app.use('/api/blood', bloodRoutes);
-app.get('/api/test', (req, res) => res.json({ message: 'chalo ye toh kaam kr rha' }));
+app.get('/api/test', (req, res) => res.json({ message: 'this works' }));
 
 app.get('/', (req, res) => res.send('✅ Blood Bank Manager API is running'));
 
 mongoose
   .connect(MONGO_URI)
   .then(() => { 
-    console.log("✅ ho gaya connect mubarak!");
+    console.log("✅ Connected successfully!");
     app.listen(PORT, () =>
-      console.log(`🚀 yaha run ho rha h-> http://localhost:${PORT}`)
+      console.log(`🚀 running here-> http://localhost:${PORT}`)
     );
   })
   .catch((err) => {
-    console.error("❌ MongoDB  connection ke lode lag gaye-> failed:", err);
+    console.error("❌ MongoDB  connection failed:", err);
     process.exit(1);
   });
